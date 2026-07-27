@@ -4,90 +4,167 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog De Jogos </title>
+    <title>Blog De Jogos</title>
     <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #eef2f5;
+            padding: 20px;
+        }
+
         header {
-            background-color: rgba(206, 178, 20, 0.867);
-            color: #f5f1f1;#ad
+            background-color: rgba(206, 178, 20, 0.95);
+            color: #ffffff;
             text-align: center;
             max-width: 800px;
-            margin: 0 auto;
-            padding: 16px;
+            margin: 0 auto 20px auto;
+            padding: 24px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        header h1 {
+            margin-bottom: 8px;
         }
 
         main {
-            background-color: .(100% 0 -0.00011);
-            background-color: .(100%  -0.00011);
+            background-color: #ffffff;
             color: #183C63;
             max-width: 800px;
             margin: 0 auto;
-            padding: 16px;
-        }
-        article{
+            padding: 24px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
             display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        article {
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+            padding: 16px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        article:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
         }
 
         img {
             width: 80px;
             height: 80px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .conteudo-artigo h2 {
+            font-size: 1.25rem;
+            margin-bottom: 4px;
         }
 
         .artigo-autor {
             font-weight: bold;
+            font-size: 0.85rem;
+            color: #666;
+            margin-bottom: 8px;
+        }
+
+        .conteudo-artigo p {
+            margin-bottom: 12px;
+            line-height: 1.4;
+        }
+
+        .botoes-reacao {
+            display: flex;
+            gap: 8px;
+        }
+
+        button {
+            background-color: #f0f4f8;
+            border: 1px solid #d0d7de;
+            padding: 6px 12px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            color: #183C63;
+            transition: background-color 0.2s, transform 0.1s;
+        }
+
+        button:hover {
+            background-color: #e1e8f0;
+        }
+
+        button:active {
+            transform: scale(0.95);
         }
     </style>
 </head>
 
 <body>
     <header>
-        <h1>indicações de Jogos </h1>
-        <p>Vou compartilhar conhecimentos sobre jogos</p>
+        <h1>Historia sobre os Dinossauros </h1>
+        <p>Vou compartilhar conhecimentos sobre os dinossauros</p>
     </header>
+
     <main>
         <article>
-            <img src="imagem-blog.png"
-                alt="Logotipo conceitual de tecnologia e educação: um livro aberto de onde emerge um cérebro digital brilhante, cercado por ícones de Wi-Fi, circuitos e lâmpada de ideia. Cores em tons de azul e branco.">
-            <div>
+            <img src="imagem-blog.png" alt="Logotipo conceitual de tecnologia e educação">
+            <div class="conteudo-artigo">
                 <h2>Vamos lá</h2>
-                <p class="artigo-autor">Por: Enzo Ryan </p>
-                <p>Boas-vindas ao meu novo blog! Aqui vou compartilhar indicações de jogos sobre qualquer estilo .</p>
-                <button>❤️ <span>0</span></button>
-                <button>👍 <span>0</span></button>
+                <p class="artigo-autor">Por: Enzo Ryan</p>
+                <p>Os dinossauros carnívoros, conhecidos como terópodes, tinham uma relação curiosa entre o tamanho da cabeça e o dos braços: quanto mais poderosa e pesada se tornava a mordida do predador ao longo da evolução, menores ficavam os seus membros dianteiros..</p>
+                <div class="botoes-reacao">
+                    <button>❤️ <span>0</span></button>
+                    <button>👍 <span>0</span></button>
+                </div>
             </div>
         </article>
+
         <article>
-            <img src="imagem-blog.png"
-                alt="Logotipo conceitual de tecnologia e educação: um livro aberto de onde emerge um cérebro digital brilhante, cercado por ícones de Wi-Fi, circuitos e lâmpada de ideia. Cores em tons de azul e branco.">
-            <div>
+            <img src="imagem-blog.png" alt="Logotipo conceitual de tecnologia e educação">
+            <div class="conteudo-artigo">
                 <h2>Primeira indicação</h2>
-                <p class="artigo-autor">Por: Enzo Ryan </p>
-                <p>Vamos a primeira indicação</p>
-                <button>❤️ <span>0</span></button>
-                <button>👍 <span>0</span></button>
+                <p class="artigo-autor">Por: Enzo Ryan</p>
+                <p>Vamos à primeira indicação!</p>
+                <div class="botoes-reacao">
+                    <button>❤️ <span>0</span></button>
+                    <button>👍 <span>0</span></button>
+                </div>
             </div>
         </article>
     </main>
+
+    <script>
+        const botoes = document.querySelectorAll("button");
+
+        botoes.forEach(function (botao) {
+            let curtiu = false;
+            
+            botao.addEventListener("click", function () {
+                let texto = botao.querySelector("span");
+                if (!curtiu) {
+                    texto.textContent = parseInt(texto.textContent) + 1;
+                    curtiu = true;
+                    botao.style.backgroundColor = "#d0e2ff"; // Destaque visual ao curtir
+                } else {
+                    texto.textContent = parseInt(texto.textContent) - 1;
+                    curtiu = false;
+                    botao.style.backgroundColor = "#f0f4f8";
+                }
+            });
+        });
+    </script>
 </body>
-<script>
-    const botoes = document.querySelectorAll("button");
-
-    botoes.forEach(function (botao) {
-        let curtiu = false;
-        botao.addEventListener("click", botaoClicado);
-        function botaoClicado() {
-            console.log("fui clicado");
-            let texto = botao.querySelector("span");
-            if (curtiu === false){
-                texto.textContent++;
-                curtiu = true;
-            } else{
-                texto.textContent--;
-                curtiu = false;
-            }
-        }
-    })
-
-
-</script>
 
 </html>
